@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aprende a navegar na Internet de forma segura: protege os teus dados, contas e dispositivos.">
+  <meta name="author" content="Projeto escolar - Segurança na Internet">
+  <title>Segurança na Internet</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #26334a;
+      line-height: 1.65;
+      background: #fff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 3px 18px rgba(20,40,80,.08);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #2458d3;
+    }
+
+    .logo span {
+      color: #16b89a;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: .95rem;
+      font-weight: 700;
+      color: #34415a;
+    }
+
+    .nav-links a:hover {
+      color: #2458d3;
+    }
+
+    .hero {
+      padding: 95px 0 90px;
+      color: white;
+      background: linear-gradient(120deg, #153b91, #2866df 58%, #16b89a);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 14px;
+      border-radius: 30px;
+      background: rgba(255,255,255,.15);
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4.2rem);
+      line-height: 1.1;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      max-width: 650px;
+      color: #e8efff;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 13px 22px;
+      border-radius: 8px;
+      background: white;
+      color: #1d4fbd;
+      font-weight: 800;
+      transition: .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px #102e6c55;
+    }
+
+    section {
+      padding: 78px 0;
+      scroll-margin-top: 80px;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 42px;
+    }
+
+    .section-title h2 {
+      color: #183d91;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #66738a;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      padding: 27px;
+      border: 1px solid #e5ebf5;
+      border-radius: 15px;
+      background: white;
+      box-shadow: 0 8px 28px rgba(31,62,112,.06);
+    }
+
+    .card .symbol {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: #eaf1ff;
+      font-size: 1.65rem;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      color: #214eae;
+      margin-bottom: 9px;
+      font-size: 1.18rem;
+    }
+
+    .card p {
+      color: #647087;
+    }
+
+    .soft {
+      background: #f5f8ff;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .two-col h2 {
+      color: #183d91;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .two-col p {
+      color: #647087;
+      margin-bottom: 14px;
+    }
+
+    .tips {
+      list-style: none;
+      margin-top: 18px;
+    }
+
+    .tips li {
+      margin: 12px 0;
+      padding-left: 30px;
+      position: relative;
+    }
+
+    .tips li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #0ca987;
+      font-weight: 900;
+    }
+
+    .visual {
+      min-height: 310px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #e6efff, #d9f8f1);
+      font-size: 7rem;
+    }
+
+    .warning {
+      border-left: 5px solid #f0a42a;
+      background: #fff8e9;
+      padding: 18px 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      color: #66502c;
+    }
+
+    .steps {
+      counter-reset: item;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .step {
+      padding: 24px;
+      background: white;
+      border-radius: 13px;
+      border: 1px solid #e5ebf5;
+    }
+
+    .step::before {
+      counter-increment: item;
+      content: counter(item);
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #2458d3;
+      color: white;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .step h3 {
+      color: #214eae;
+      margin-bottom: 8px;
+    }
+
+    .quiz {
+      max-width: 760px;
+      margin: auto;
+      padding: 30px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 28px rgba(31,62,112,.07);
+    }
+
+    .quiz h3 {
+      color: #214eae;
+      margin-bottom: 15px;
+    }
+
+    .quiz label {
+      display: block;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .quiz button {
+      border: 0;
+      cursor: pointer;
+      background: #2458d3;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      margin-top: 15px;
+    }
+
+    #resultado {
+      margin-top: 15px;
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 28px 0;
+      text-align: center;
+      background: #142b59;
+      color: #dce6ff;
+    }
+
+    footer p {
+      font-size: .9rem;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .nav-links a {
+        font-size: .82rem;
+      }
+
+      .cards, .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .visual {
+        min-height: 220px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 15px 0;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+        gap: 12px 18px;
+      }
+
+      .hero {
+        padding: 68px 0;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+
+      .cards, .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .quiz {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav class="container">
+    <a class="logo" href="#inicio">SEGURANÇA<span>ONLINE</span></a>
+
+    <ul class="nav-links">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#riscos">Riscos</a></li>
+      <li><a href="#protecao">Proteção</a></li>
+      <li><a href="#redes">Redes sociais</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero" id="inicio">
+    <div class="container hero-content">
+
+      <span class="eyebrow">
+        INFORMAÇÃO • PREVENÇÃO • SEGURANÇA
+      </span>
+
+      <h1>Navega na Internet com segurança.</h1>
+
+      <p>
+        A Internet é uma ferramenta útil para aprender,
+        comunicar e divertir. No entanto, também existem riscos.
+        Aprende a reconhecer ameaças e a proteger a tua
+        informação pessoal.
+      </p>
+
+      <a class="button" href="#protecao">
+        Descobrir como me proteger
+      </a>
+
+    </div>
+  </section>
+
+
+  <section id="riscos">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Quais são os principais riscos?</h2>
+
+        <p>
+          Conhecer os perigos é o primeiro passo para utilizar
+          a Internet de forma responsável.
+        </p>
+      </div>
+
+      <div class="cards">
+
+        <article class="card">
+          <div class="symbol">🎣</div>
+
+          <h3>Phishing</h3>
+
+          <p>
+            São mensagens ou páginas falsas que tentam enganar
+            as pessoas para obter palavras-passe, dados bancários
+            ou outras informações pessoais. Desconfia de mensagens
+            urgentes e de links desconhecidos.
+          </p>
+        </article>
+
+
+        <article class="card">
+          <div class="symbol">🦠</div>
+
+          <h3>Vírus e malware</h3>
+
+          <p>
+            São programas maliciosos que podem danificar
+            dispositivos, espiar atividades ou roubar informação.
+            Evita descarregar ficheiros de sites que não conheces.
+          </p>
+        </article>
+
+
+        <article class="card">
+          <div class="symbol">💬</div>
+
+          <h3>Ciberbullying</h3>
+
+          <p>
+            É a utilização de meios digitais para intimidar,
+            humilhar ou ameaçar alguém. Não participes na
+            divulgação de conteúdos ofensivos e pede ajuda
+            a um adulto de confiança.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="soft" id="protecao">
+    <div class="container two-col">
+
+      <div>
+
+        <h2>Protege as tuas contas e os teus dados</h2>
+
+        <p>
+          Os dados pessoais incluem o nome completo, a morada,
+          o número de telefone, as fotografias e as palavras-passe.
+          Partilha apenas a informação necessária e com pessoas
+          ou serviços de confiança.
+        </p>
+
+        <ul class="tips">
+          <li>Cria palavras-passe longas e diferentes para cada conta.</li>
+
+          <li>Ativa a autenticação de dois fatores sempre que possível.</li>
+
+          <li>Mantém o sistema operativo e as aplicações atualizados.</li>
+
+          <li>Não abras anexos nem links suspeitos.</li>
+
+          <li>Termina a sessão quando utilizares um dispositivo partilhado.</li>
+        </ul>
+
+      </div>
+
+      <div class="visual" aria-label="Ilustração de um cadeado">
+        🔐
+      </div>
+
+    </div>
+  </section>
+
+
+  <section id="redes">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Segurança nas redes sociais</h2>
+
+        <p>
+          Publicar é fácil, mas nem tudo deve ser partilhado.
+          Pensa antes de publicar.
+        </p>
+      </div>
+
+
+      <div class="cards">
+
+        <article class="card">
+          <div class="symbol">🔒</div>
+
+          <h3>Configura a privacidade</h3>
+
+          <p>
+            Revê as definições de privacidade e escolhe quem
+            pode ver as tuas publicações, fotografias e informações.
+          </p>
+        </article>
+
+
+        <article class="card">
+          <div class="symbol">🧑‍🤝‍🧑</div>
+
+          <h3>Tem cuidado com desconhecidos</h3>
+
+          <p>
+            Nem todas as pessoas são quem dizem ser. Não partilhes
+            dados pessoais nem combines encontros com desconhecidos
+            sem falar com um adulto de confiança.
+          </p>
+        </article>
+
+
+        <article class="card">
+          <div class="symbol">📸</div>
+
+          <h3>Pensa antes de publicar</h3>
+
+          <p>
+            Uma fotografia ou mensagem pode ser copiada e partilhada.
+            Respeita a tua privacidade e a dos outros antes de publicar
+            qualquer conteúdo.
+          </p>
+        </article>
+
+      </div>
+
+
+      <div class="warning">
+        <strong>Se algo te deixar desconfortável:</strong>
+        guarda provas da situação, bloqueia e denuncia a conta
+        quando necessário e fala com um adulto de confiança.
+        Não tens de resolver o problema sozinho.
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="soft">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Três hábitos para navegar melhor</h2>
+
+        <p>
+          Pequenas atitudes podem fazer uma grande diferença
+          na tua segurança digital.
+        </p>
+      </div>
+
+
+      <div class="steps">
+
+        <article class="step">
+          <h3>Verifica</h3>
+
+          <p>
+            Confirma se o site é verdadeiro e se o endereço
+            está correto antes de introduzires dados.
+          </p>
+        </article>
+
+
+        <article class="step">
+          <h3>Protege</h3>
+
+          <p>
+            Utiliza palavras-passe seguras, atualizações
+            e autenticação de dois fatores.
+          </p>
+        </article>
+
+
+        <article class="step">
+          <h3>Pede ajuda</h3>
+
+          <p>
+            Se receberes uma ameaça ou encontrares algo suspeito,
+            fala com alguém de confiança.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section id="quiz">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Testa os teus conhecimentos</h2>
+
+        <p>
+          Escolhe a resposta correta e verifica o que aprendeste.
+        </p>
+      </div>
+
+
+      <div class="quiz">
+
+        <h3>
+          Recebes uma mensagem inesperada a pedir a tua
+          palavra-passe. O que deves fazer?
+        </h3>
+
+        <form id="quizForm">
+
+          <label>
+            <input type="radio" name="resposta" value="a">
+            Responder com a palavra-passe.
+          </label>
+
+          <label>
+            <input type="radio" name="resposta" value="b">
+            Não responder, não abrir links e confirmar a mensagem
+            por um canal oficial.
+          </label>
+
+          <label>
+            <input type="radio" name="resposta" value="c">
+            Reencaminhar a mensagem para os teus amigos.
+          </label>
+
+          <button type="submit">
+            Verificar resposta
+          </button>
+
+        </form>
+
+        <p id="resultado" aria-live="polite"></p>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<footer>
+  <div class="container">
+
+    <p>Projeto escolar — Segurança na Internet</p>
+
+    <p>
+      Conteúdos informativos redigidos para fins educativos.
+      Sê responsável e protege-te online.
+    </p>
+
+  </div>
+</footer>
+
+
+<script>
+  document.getElementById("quizForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const resposta = document.querySelector(
+      'input[name="resposta"]:checked'
+    );
+
+    const resultado = document.getElementById("resultado");
+
+    if (!resposta) {
+
+      resultado.textContent = "Seleciona uma resposta primeiro.";
+
+    } else if (resposta.value === "b") {
+
+      resultado.textContent =
+        "Correto! Nunca partilhes a tua palavra-passe e confirma mensagens suspeitas.";
+
+      resultado.style.color = "#078568";
+
+    } else {
+
+      resultado.textContent =
+        "Não é a opção mais segura. Nunca partilhes a tua palavra-passe.";
+
+      resultado.style.color = "#c04b35";
+
+    }
+
+  });
+</script>
+
+</body>
+</html>
